@@ -1,14 +1,17 @@
 
 
-const Header = ()=>{
+const Header = () => {
     return (
         <>
-            <div className="row header-main">
-                <div className="col-md-12">
-                    <div className="container">
-                        dsdsds
-                    </div>
-                </div>
+            <div className="row header-main fixed-top">
+                        <nav className="navbar navbar-light bg-light">
+                            <div className="container">
+                                <a className="navbar-brand" href="#">
+                                    Logo here
+                                </a>
+                            </div>
+                        </nav>
+                    
             </div>
         </>
     )

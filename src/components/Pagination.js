@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 
 const Pagination = ({ currentPage, postsPerPage, getPost, paginate }) => {
@@ -7,27 +7,25 @@ const Pagination = ({ currentPage, postsPerPage, getPost, paginate }) => {
     for (let i = 1; i <= Math.ceil((getPost.length) / 10); i++) {
         pageNumbers.push(i)
     }
-    console.log('paginate',paginate)
+    //console.log('currentPage', currentPage)
     return (
         <nav>
-            <ul className="pagination">
-                <li class="page-item">
-                    <a class="page-link" href={currentPage - 1} onClick={() => paginate(currentPage - 1)}>
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
+            <ul className="pagination justify-content-center">
+                <li className="page-item">
+                    <a className={`page-link ${currentPage == 1 ? 'disabled' : ''}`} href={currentPage - 1} onClick={() => paginate(currentPage - 1)}>
+                        <span className="sr-only">Previous</span>
                     </a>
                 </li>
                 {pageNumbers.map((number) => (
-                    <li key={number} className="page-item">
+                    <li key={number} className={`page-item ${(number) == currentPage ? 'active' : ''}`}>
                         <a onClick={() => paginate(number)} to={number} className="page-link">
                             {number}
                         </a>
                     </li>
                 ))}
-                <li class="page-item">
-                    <a class="page-link" to={currentPage + 1} onClick={() => paginate(currentPage + 1)}>
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
+                <li className="page-item">
+                    <a className={`page-link ${currentPage == (pageNumbers.length) ? 'disabled' : ''}`} to={currentPage + 1} onClick={() => paginate(currentPage + 1)}>
+                        <span className="sr-only">Next</span>
                     </a>
                 </li>
             </ul>
